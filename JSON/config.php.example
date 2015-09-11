@@ -1,0 +1,15 @@
+<?php
+	$dbhost[1] = "192.168.0.1";
+	$dbuser[1] = "username";
+	$dbpass[1] = "password";
+	$dbname[1] = "dbname";
+
+	$dbhost[2] = "localhost";
+	$dbuser[2] = "username";
+	$dbpass[2] = "password";
+	$dbname[2] = "dbname";
+
+	$max_state = 2;
+
+	$api_pin = "00000";
+?>

@@ -1,0 +1,186 @@
+body {
+	background-color: black;
+	color: white;
+	cursor: none;
+	font-family: Helvetica;
+}
+
+a:link {
+	text-decoration: none;
+	color: initial;
+}
+
+a:visited {
+	text-decoration: none;
+	color: initial;
+}
+
+a:hover {
+	text-decoration: none;
+	color: initial;
+}
+
+a:active {
+	text-decoration: none;
+	color: initial;
+}
+
+.data {
+	color: white;
+	font-size: 40pt;
+	font-weight: bold;
+}
+
+
+.czas {
+	color: white;
+	font-size: 40pt;
+	font-weight: bold;
+	position: absolute;
+	right: 10px;
+}
+
+.ramka {
+	border: 1px solid white; 
+	border-radius: 10px; 
+	width: 200px;
+	font-size: 35pt;
+	text-align: center;
+	padding: 20px 0 0 0;
+	margin: 0 3px;
+	color: black;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.ramka_sm1 {
+	border: 1px solid white; 
+	border-radius: 10px; 
+	width: 69px;
+	font-size: 20pt;
+	text-align: center;
+	padding: 6px 0;
+	margin: 0 3px;
+	margin-bottom: 2px;
+	color: black;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.ramka_nagios {
+        border: 1px solid white;
+        border-radius: 10px;
+        width: auto;
+        font-size: 15pt;
+        text-align: center;
+        padding: 3px 14px;
+        margin: 2px 2px;
+        color: black;
+        overflow: hidden;
+	float: left;
+	white-space: nowrap;
+}
+
+.op_ramka_off {
+        border: 3px solid red;
+        border-radius: 10px;
+        width: auto;
+        font-size: 15pt;
+        text-align: center;
+        padding: 3px 14px;
+        margin: 2px 2px;
+        color: black;
+        overflow: hidden;
+	white-space: nowrap;
+	background-color: gray;
+}
+
+.op_ramka_on {
+        border: 3px solid lightgreen;
+        border-radius: 10px;
+        width: auto;
+        font-size: 15pt;
+        text-align: center;
+        padding: 3px 14px;
+        margin: 2px 2px;
+        color: black;
+        overflow: hidden;
+	white-space: nowrap;
+	background-color: gray;
+}
+
+.op_ramka_diff {
+        border: 3px solid white;
+        border-radius: 10px;
+        width: auto;
+        font-size: 15pt;
+        text-align: center;
+        padding: 3px 14px;
+        margin: 2px 2px;
+        color: black;
+        overflow: hidden;
+	white-space: nowrap;
+	background-color: gray;
+}
+
+.op_button {
+	border: 3px solid white;
+	border-radius: 10px;
+	width: auto;
+	font-size: 15pt;
+	text-align: center;
+	padding: 3px 14px;
+	margin: 2px 2px;
+	color: white;
+	background-color: #0080ff;
+}
+
+.low_r {
+	width: 80px;
+	color: black;
+	font-weight: bold;
+	font-size: 11pt;
+	/*margin-bottom: -20px;*/
+	padding: 0 3px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.grupa {
+	border: 1px dashed gray;
+	padding: 2px 5px;
+	margin: -1px;
+}
+
+table.ipsec_info {
+	width: 100%;
+
+}
+
+td.ipsec_info {
+        border: 1px solid #888888;
+        border-radius: 10px;
+        width: auto;
+        text-align: center;
+        padding: 3px 14px;
+        margin: 2px 2px;
+        color: white;
+        overflow: hidden;
+        white-space: nowrap;
+        background-color: #333333;
+}
+
+.ramka_inne {
+        border: 1px solid white;
+        border-radius: 10px;
+        width: auto;
+        font-size: 15pt;
+        text-align: center;
+        padding: 3px 14px;
+        margin: 2px 2px;
+        color: black;
+        overflow: hidden;
+        white-space: nowrap;
+	font-weight: bold;
+}
+
