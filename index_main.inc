@@ -3,9 +3,11 @@
         echo '<div style="clear: left; text-align: center;"><b>Serwerownia - Jagiellońska</b></div>';
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.83.66;temp');
 //	$dane = get_JSON_value('getEnvHostStatebyHost', '192.168.201.6;temp');
-        draw_main_frame ("Temperatura", "<b>$dane->Value</b>&deg;C", $dane->Color);
+        if (is_numeric($dane->Value)) $text = "<b>$dane->Value</b>&deg;C"; else $text = "<b>$dane->Value</b>";
+	draw_main_frame ("Temperatura", $text, $dane->Color);
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.83.66;humi');
-        draw_main_frame ("Wilgotność", "<b>$dane->Value</b> %", $dane->Color);
+        if (is_numeric($dane->Value)) $text = "<b>$dane->Value</b> %"; else $text = "<b>$dane->Value</b>";
+	draw_main_frame ("Wilgotność", $text, $dane->Color);
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.83.68;temp');
         $dane2 = get_JSON_value('getEnvHostStatebyHost', '192.168.83.68;humi');
         draw_frame_twosmallbricks ("UPS Klim.", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
