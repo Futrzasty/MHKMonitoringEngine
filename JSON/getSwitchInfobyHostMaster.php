@@ -12,7 +12,7 @@
         $alias = $argc[0];
 
 //        $query = "SELECT * FROM [dbo].[Resources] WHERE Type = 8 AND ResourceType = 10";
-        $query = "SELECT [DetailedRoomDescription], [Resources].[Name], [Locations].[Name] AS Street
+        $query = "SELECT [DetailedRoomDescription], [Resources].[Name], [Locations].[Name] AS Street, [Impact]
   		  FROM [Resources]
 		  INNER JOIN [Locations] 
 		  ON [Resources].[Location1] = [Locations].[Id]
@@ -23,8 +23,9 @@
 	//$numRows = mssql_num_rows($result);
         $row = mssql_fetch_array($result);
 
-	$output = array('Alias' => $row["Street"]." - ".$row["DetailedRoomDescription"],
-			'Name' => $row["Name"],
+	$output = array('Alias'  => $row["Street"]." - ".$row["DetailedRoomDescription"],
+			'Name'   => $row["Name"],
+			'Impact' => $row["Impact"],	
 		
 	);
 				
