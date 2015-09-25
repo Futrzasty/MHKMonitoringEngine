@@ -21,7 +21,7 @@
                 }
                 $row = mysql_fetch_assoc($result);
 
-		mysql_query("UPDATE switch_ping SET `alias` = \"$info->Alias\", `name` = \"$info->Name\" WHERE `host` = \"$host\";");
+		mysql_query("UPDATE switch_ping SET `alias` = \"$info->Alias\", `name` = \"$info->Name\", `impact` = \"$info->Impact\" WHERE `host` = \"$host\";");
 
         }
 
@@ -38,7 +38,7 @@
                 }
                 $row = mysql_fetch_assoc($result);
 
-		mysql_query("UPDATE wireless_ping SET `alias` = \"$info->Alias\", `name` = \"$info->Name\" WHERE `host` = \"$host\";");
+		mysql_query("UPDATE wireless_ping SET `alias` = \"$info->Alias\", `name` = \"$info->Name\", `impact` = \"$info->Impact\" WHERE `host` = \"$host\";");
 
         }
 
@@ -55,7 +55,7 @@
                 }
                 $row = mysql_fetch_assoc($result);
 
-		mysql_query("UPDATE router_ping SET `alias` = \"$info->Alias\", `name` = \"$info->Name\" WHERE `host` = \"$host\";");
+		mysql_query("UPDATE router_ping SET `alias` = \"$info->Alias\", `name` = \"$info->Name\", `impact` = \"$info->Impact\" WHERE `host` = \"$host\";");
 
         }
 
