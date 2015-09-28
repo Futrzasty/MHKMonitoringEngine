@@ -14,14 +14,18 @@
         $hosts = get_JSON_value('getPrinterList');
 	
 	foreach ($hosts as $host) {
-		$values = snmp2_walk ($host, "public", ".1.3.6.1.2.1.43.11.1.1.9");
-		$names = snmp2_walk ($host, "public", ".1.3.6.1.2.1.43.11.1.1.6");
+		$result = mysql_query("SELECT community FROM printer_snmp WHERE host = \"$host\";");
+		$row = mysql_fetch_assoc($result);
+		$community = $row["community"];
+
+		$values = snmp2_walk ($host, $community, ".1.3.6.1.2.1.43.11.1.1.9");
+		$names = snmp2_walk ($host, $community, ".1.3.6.1.2.1.43.11.1.1.6");
 		foreach ($names as $i => $name) {
 			$result = mysql_query("SELECT value_max FROM printer_snmp_details WHERE host = \"$host\" AND name = \"$name\";");
 
 			if (mysql_num_rows($result) != 0) {
 				$row = mysql_fetch_assoc($result);	
-				if (($values[$i] > 0) && ($row["value_max"] > 0)) {
+				if (($values[$i] >= 0) && ($row["value_max"] > 0)) {
 					$value = ($values[$i]/$row["value_max"]) * 100;
 				}
 				else
