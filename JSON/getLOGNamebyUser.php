@@ -15,15 +15,17 @@
 	$name_to_search = rawurldecode($name_to_search);
 	
 //        $query = "SELECT * FROM [dbo].[Resources] WHERE Type = 8 AND ResourceType = 10";
-        $query = "SELECT [Name], [Description]
-  		  FROM [Resources]
+        $query = "SELECT [LOG-SYSTEM].[dbo].[Resources].[Name], [Description], [LOG-SYSTEM].[dbo].[ResourceTypes].[Name] AS Typ, [Notice]
+                  FROM [Resources]
+                  INNER JOIN [LOG-SYSTEM].[dbo].ResourceTypes
+                  ON [LOG-SYSTEM].[dbo].[Resources].[ResourceType] = [LOG-SYSTEM].[dbo].[ResourceTypes].[Id]
                   WHERE [Kind] = 'Computer' AND [HasAgent] = 1 AND [Resources].[Description] LIKE '%$name_to_search%';";
 
 	$result = mssql_query($query);
 
 	//$numRows = mssql_num_rows($result);
         while($row = mssql_fetch_array($result)) {
-		$output[] = $row["Name"]." - ".$row["Description"];
+		$output[] = $row["Name"]." - ".$row["Description"]." (".$row["Typ"]." / ".$row["Notice"].")";
         }
 
         mssql_close($dbhandle);
