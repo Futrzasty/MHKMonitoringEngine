@@ -14,7 +14,7 @@
 
 
 //        $query = "SELECT * FROM [dbo].[Resources] WHERE Type = 8 AND ResourceType = 10";
-        $query = "SELECT [Description]
+        $query = "SELECT [Description], [Name]
   		  FROM [Resources]
                   WHERE [Kind] = 'Computer' AND [Resources].[Name] LIKE '%$name_to_search' OR [Resources].[Name] LIKE '%$name_to_search.%';";
 
@@ -22,7 +22,7 @@
 
 	//$numRows = mssql_num_rows($result);
         while($row = mssql_fetch_array($result)) {
-		$output[] = $row["Description"];
+		$output[] = $row["Name"]." - ".$row["Description"];
         }
 
         mssql_close($dbhandle);
