@@ -11,7 +11,12 @@
         mysql_query("SET NAMES utf8");
         mysql_query("SET COLLATION utf8");
 
-	$query="SELECT id FROM router_ping ORDER BY state DESC, name ASC;";
+        $id = (int)$_SERVER["QUERY_STRING"];
+
+        $where = "";
+        if ($id != 0) $where = "WHERE state = $id";
+
+	$query="SELECT id FROM router_ping $where ORDER BY state DESC, name ASC;";
         $result = mysql_query($query);
 
 	while ($row = mysql_fetch_assoc($result)) {
@@ -24,5 +29,5 @@
 
 //	var_dump($output);
 
-	echo json_encode($output);
+	if (isset($output)) echo json_encode($output);
 ?>
