@@ -201,13 +201,13 @@ div.right_column {
 }
 
 div.main_footer {
-        background-color: green;
+        /*background-color: green;*/
         width: 100%;
         clear: both;
 }
 
 div.left_in_column {
-        background-color: yellow;
+        /*background-color: yellow;*/
         width: 50%;
         float: left;
         overflow: hidden;
@@ -219,7 +219,7 @@ div.right_in_column {
 }
 
 div.in_footer {
-        background-color: grey;
+        /*background-color: grey;*/
         width: 100%;
         clear: both;
 }

@@ -230,4 +230,26 @@ function get_JSON_value ($func, $arg='') {
         fclose($uchwyt);
         return json_decode($tresc);
 }
-?>
+
+function ageString($seconds)
+{
+    $age = "";
+    if ($seconds > 86400) {
+        $days = (int)($seconds / 86400);
+        $seconds = $seconds - ($days * 86400);
+        $age .= $days . "d";
+    }
+    if ($seconds > 3600) {
+        $hours = (int)($seconds / 3600);
+        $seconds = $seconds - ($hours * 3600);
+        $age .= $hours . "h";
+    }
+    if ($seconds > 60) {
+        $minutes = (int)($seconds / 60);
+        $seconds = $seconds - ($minutes * 60);
+        $age .= $minutes . "m";
+    }
+    $age .= $seconds . "s";
+    return $age;
+}
+
