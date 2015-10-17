@@ -86,6 +86,7 @@ function get_printer_status($host,$community) {
 }
 
 function get_nagios_status($host) {
+	global $nagios_username, $nagios_password;
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$host);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout after 30 seconds
