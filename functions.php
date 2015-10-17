@@ -86,16 +86,12 @@ function get_printer_status($host,$community) {
 }
 
 function get_nagios_status($host) {
-
-	$username = "nagiosadmin";
-	$password = "Adminmhk1";
-
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$host);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout after 30 seconds
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+	curl_setopt($ch, CURLOPT_USERPWD, "$nagios_username:$nagios_password");
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);   //get status code
