@@ -29,7 +29,10 @@ function findUser() {
         span.innerHTML = "";
 
 	var xmlhttp = new XMLHttpRequest();
-	var url = "http://monitoring.mhk.local/JSON/getLOGUserbyName.php?" + TestVar;
+	var url1 = window.location.href;
+	var arr = url1.split("/");
+	var hostname = arr[0] + "//" + arr[2];
+	var url = hostname+"/JSON/getLOGUserbyName.php?" + TestVar;
 	xmlhttp.onreadystatechange = function() {
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 		var myArr = JSON.parse(xmlhttp.responseText);
@@ -61,7 +64,10 @@ function findName() {
         span.innerHTML = "";	
 	
 	var xmlhttp = new XMLHttpRequest();
-	var url = "http://monitoring.mhk.local/JSON/getLOGNamebyUser.php?" + TestVar;
+	var url1 = window.location.href;
+	var arr = url1.split("/");
+	var hostname = arr[0] + "//" + arr[2];
+	var url = hostname+"/JSON/getLOGNamebyUser.php?" + TestVar;
 	xmlhttp.onreadystatechange = function() {
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 		var myArr = JSON.parse(xmlhttp.responseText);

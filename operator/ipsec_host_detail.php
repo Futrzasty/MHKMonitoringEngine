@@ -61,7 +61,7 @@ function difftocolor ($diff) {
 	}
 	echo '</table><br/>';
 
-	echo '<img src="http://monitoring.mhk.local/rrd_graph.php?ipsec4h;'.$host.'" alt="wykresik" /><br />';
+	echo '<img src="/rrd_graph.php?ipsec4h;'.$host.'" alt="wykresik" /><br />';
 
 	include '_include/'.$isp.'.html';
 	echo '</div>';
