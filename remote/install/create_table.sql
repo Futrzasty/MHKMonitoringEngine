@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 05 Lis 2015, 15:13
+-- Czas wygenerowania: 17 Lis 2015, 10:53
 -- Wersja serwera: 5.5.44
 -- Wersja PHP: 5.4.44-0+deb7u1
 
@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `hosts` (
   `state` int(11) DEFAULT NULL,
   `value` decimal(10,3) DEFAULT NULL,
   `value_last` decimal(10,3) DEFAULT NULL,
+  `last_check` timestamp NULL DEFAULT NULL,
   `last_change` timestamp NULL DEFAULT NULL,
   `probe_cmd` varchar(1000) COLLATE utf8_polish_ci DEFAULT NULL,
   `disabled` int(11) DEFAULT NULL,

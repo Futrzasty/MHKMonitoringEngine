@@ -21,7 +21,7 @@
                  $value = ping($row["ip"], 2)[2];
                  if ($value == '') {$value = 'NULL'; $state = 2;}
                  if ($state != $state_old) mysql_query("UPDATE hosts SET last_change= CURRENT_TIMESTAMP WHERE id = $id");
-                 mysql_query("UPDATE hosts SET `value_last` = `value`, `value` = $value, `state` = $state WHERE id = $id");
+                 mysql_query("UPDATE hosts SET `value_last` = `value`, `value` = $value, `state` = $state, `last_check` = CURRENT_TIMESTAMP WHERE id = $id");
                  break;
              case "www":
                  if ($row["disabled"] == 1) break;
@@ -32,7 +32,7 @@
                  $value = check_www($comm[0], $comm[1], 15);
                  if (!$value) {$value = 'NULL'; $state = 2;}
                  if ($state != $state_old) mysql_query("UPDATE hosts SET last_change= CURRENT_TIMESTAMP WHERE id = $id");
-                 mysql_query("UPDATE hosts SET `value_last` = `value`, `value` = $value, `state` = $state WHERE id = $id");
+                 mysql_query("UPDATE hosts SET `value_last` = `value`, `value` = $value, `state` = $state, `last_check` = CURRENT_TIMESTAMP WHERE id = $id");
                  break;
         }
     }
