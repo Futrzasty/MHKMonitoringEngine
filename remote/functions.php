@@ -22,17 +22,23 @@
         return array($min, $avg, $max, $mdev);
     }
 
-    function check_www ($host, $content, $timeout, $username='', $password='') {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$host);
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout); //timeout after 30 seconds
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-    //	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-    //	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);   //get status code
-        $tresc=curl_exec ($ch);
-        curl_close ($ch);
-        return stripos($tresc, $content);
+    function check_www ($host, $content) {
+        $cmd = "/usr/lib/nagios/plugins/check_http -H ".$host." -r ".$content;
+        $last_line = exec($cmd, $full_output, $return_code);
+
+        return array($return_code);
+    }
+
+    function nrpe_smtp ($host) {
+        $cmd = "/usr/lib/nagios/plugins/check_smtp -H ".$host."";
+        $last_line = exec($cmd, $full_output, $return_code);
+        //$r = explode("|", $st);
+        //$r1 = str_ireplace("'5 min avg Load'= ", "", $r[1]);
+        //$r1 = explode("=", $r[1]);
+        //$r2 = explode(";", $r1[1]);
+        //foreach ($r2 as &$value) {
+        //    $value = str_ireplace("%","", $value);
+        //}
+
+        return array($return_code);
     }
