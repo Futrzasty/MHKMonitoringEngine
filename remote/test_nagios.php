@@ -20,8 +20,20 @@
     $exp2 = explode(" ", $exp1[1]);
     echo $exp2[0]."<br/>";
     echo $exp2[1]."<br/>";
+
     list($k, $v) = explode('=', $exp2[0]);
     $exp3[$k] = explode(";",$v)[0];
     list($k, $v) = explode('=', $exp2[1]);
     $exp3[$k] = explode(";",$v)[0];
     var_dump($exp3);
+    echo "<br/>";
+
+    list($k, $v) = explode('=', $exp2[0]);
+    $exp4[$k] = explode(";",(float)$v)[0];
+    list($k, $v) = explode('=', $exp2[1]);
+    $exp4[$k] = explode(";",(float)$v)[0];
+    var_dump($exp4);
+    echo "<br/>";
+
+    echo (float)$exp3["rta"]."<br/>";
+    echo (float)$exp3["pl"]."<br/>";

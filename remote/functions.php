@@ -29,6 +29,21 @@
         return array($return_code);
     }
 
+    function check_ping ($host, $w_rta, $w_pl, $c_rta, $c_pl) {
+        $cmd = "/usr/lib/nagios/plugins/check_ping -H $host -w $w_rta,$w_pl% -c $c_rta,$c_pl%";
+        exec($cmd, $full_output, $return_code);
+
+        $exp1 = explode("|", $full_output[0]);
+        $exp2 = explode(" ", $exp1[1]);
+
+        list($k, $v) = explode('=', $exp2[0]);
+        $exp3[$k] = explode(";",(float)$v)[0];
+        list($k, $v) = explode('=', $exp2[1]);
+        $exp3[$k] = explode(";",(float)$v)[0];
+
+        return array($return_code, $exp3["rta"]<>NULL?$exp3["rta"]:"NULL", $exp3["pl"]<>NULL?$exp3["pl"]:"NULL");
+    }
+
     function nrpe_smtp ($host) {
         $cmd = "/usr/lib/nagios/plugins/check_smtp -H ".$host."";
         $last_line = exec($cmd, $full_output, $return_code);
