@@ -2,6 +2,8 @@
     error_reporting(E_ALL & ~E_NOTICE);
     include_once ("functions.php");
 
+    $time_start = microtime(true);
+
     mysql_connect('localhost', $db_user, $db_pass);
     @mysql_select_db($db_name) or die("Nie udało się wybrać bazy danych");
 
@@ -12,7 +14,6 @@
 
     $result = mysql_query("SELECT * FROM hosts ORDER BY `order`");
     while($row = mysql_fetch_assoc($result)) {
-         $state = 0;
          $state_old = $row["state"];
          $id = $row["id"];
          if ($row["disabled"] == 1) continue;
@@ -36,3 +37,8 @@
                    break;
         }
     }
+
+    $time_end = microtime(true);
+    $extime = $time_end - $time_start;
+    rrd_update($webserver_path."remote/rrd_data/extime.rrd", array("N:$extime"));
+    //echo date(DATE_RFC822).": Execution time ".$extime." sec.\n";

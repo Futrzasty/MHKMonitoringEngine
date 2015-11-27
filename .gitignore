@@ -1,3 +1,4 @@
 config.php
 rrd-data/*
 .idea/
+*.rrd

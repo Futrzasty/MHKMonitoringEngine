@@ -1,6 +1,8 @@
 <?php
     include_once ("config.php");
 
+    $webserver_path = "/var/www/";
+
     function ping($t,$p){
         $r = array();
         $st = "ping -W 1 -c ".$p." -w ".$p." ".$t;
