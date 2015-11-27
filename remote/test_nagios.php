@@ -37,3 +37,16 @@
 
     echo (float)$exp3["rta"]."<br/>";
     echo (float)$exp3["pl"]."<br/>";
+echo "---------------------------------------<br/>";
+unset ($full_output, $return_code);
+$cmd = "/usr/lib/nagios/plugins/check_ssh -H 192.168.0.10 -p 2211";
+echo exec($cmd, $full_output, $return_code)."<br/>";
+
+$exp1 = explode("|", $full_output[0]);
+$exp2 = explode(" ", trim($exp1[1]));
+var_dump(trim($exp1[1]));
+echo "<br/>";
+list($k, $v) = explode('=', $exp2[0]);
+$exp3[$k] = explode(";",(float)$v)[0];
+
+var_dump(array($return_code, $exp3["time"]<>NULL?$exp3["time"]:"NULL"));

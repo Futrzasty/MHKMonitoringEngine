@@ -36,7 +36,7 @@
         exec($cmd, $full_output, $return_code);
 
         $exp1 = explode("|", $full_output[0]);
-        $exp2 = explode(" ", $exp1[1]);
+        $exp2 = explode(" ", trim($exp1[1]));
 
         list($k, $v) = explode('=', $exp2[0]);
         $exp3[$k] = explode(";",(float)$v)[0];
@@ -58,4 +58,17 @@
         //}
 
         return array($return_code);
+    }
+
+    function check_ssh ($host, $port) {
+        $cmd = "/usr/lib/nagios/plugins/check_ssh -H $host -p $port";
+        exec($cmd, $full_output, $return_code);
+
+        $exp1 = explode("|", $full_output[0]);
+        $exp2 = explode(" ", trim($exp1[1]));
+
+        list($k, $v) = explode('=', $exp2[0]);
+        $exp3[$k] = explode(";",(float)$v)[0];
+
+        return array($return_code, $exp3["time"]<>NULL?$exp3["time"]:"NULL");
     }

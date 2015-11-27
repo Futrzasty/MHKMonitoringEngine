@@ -19,8 +19,8 @@
          if ($row["disabled"] == 1) continue;
          switch ($row["type"]) {
               case "ping":
-                   $ping = check_ping($row["ip"], 200, 50, 500, 70);
-                   list ($state, $value, $value2) = $ping;
+                   $probe = check_ping($row["ip"], 200, 50, 500, 70);
+                   list ($state, $value, $value2) = $probe;
                    if ($state != $state_old) mysql_query("UPDATE hosts SET last_change= CURRENT_TIMESTAMP WHERE id = $id");
                    mysql_query("UPDATE hosts SET `value_last` = `value`, `value` = $value, `value2_last` = `value2`, `value2` = $value2, `state` = $state, `last_check` = CURRENT_TIMESTAMP WHERE id = $id");
                    break;
@@ -35,6 +35,12 @@
                    if ($state != $state_old) mysql_query("UPDATE hosts SET last_change= CURRENT_TIMESTAMP WHERE id = $id");
                    mysql_query("UPDATE hosts SET `value_last` = `value`, `value` = $state, `state` = $state, `last_check` = CURRENT_TIMESTAMP WHERE id = $id");
                    break;
+              case "ssh":
+                  $probe = check_ssh($row["ip"], $row["probe_cmd"]<>NULL?$row["probe_cmd"]:"22");
+                  list ($state, $value) = $probe;
+                  if ($state != $state_old) mysql_query("UPDATE hosts SET last_change= CURRENT_TIMESTAMP WHERE id = $id");
+                  mysql_query("UPDATE hosts SET `value_last` = `value`, `value` = $value, `state` = $state, `last_check` = CURRENT_TIMESTAMP WHERE id = $id");
+                  break;
         }
     }
 
