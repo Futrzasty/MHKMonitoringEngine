@@ -5,25 +5,64 @@
 
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link href="../index.css" rel="stylesheet" type="text/css" />
 <title>IT Helper WEB-APP</title>
+<style type="text/css">
+	body {
+		color: white;
+		background-color: #303030;
+		font-family: Helvetica, sans-serif;
+	}
+
+	a:link {
+		text-decoration: none;
+		color: skyblue;
+	}
+
+	a:visited {
+		text-decoration: none;
+		color: skyblue;
+	}
+
+	a:hover {
+		text-decoration: underline;
+		color: skyblue;
+	}
+
+	a:active {
+		text-decoration: none;
+		color: skyblue;
+	}
+	fieldset {
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+	p {
+		margin: 0;
+		padding: 0;
+	}
+</style>
 </head>
-<body style="cursor: initial;">
+<body>
 
-<form onSubmit="return findALL();">
-<input type="text" id="user" name="testtext" />
-<input type="button" onclick="findUser();" value="Find User" />
-<input type="button" onclick="findName();" value="Find Name" />
-<input type="submit" onclick="return findALL();" value="Find ALL" />
+<form onSubmit="return findALL();" action="">
+	<fieldset>
+		<input type="text" id="user" name="testtext" title="" />
+		<input type="button" onclick="findUser();" value="Find User" />
+		<input type="button" onclick="findName();" value="Find Name" />
+		<input type="submit" onclick="return findALL();" value="Find ALL" />
+	</fieldset>
 </form>
-
-<span id="wynik1" style="cursor: text;"></span>
-<span id="wynik2" style="cursor: text;"></span>
-
-<script>
+<p>
+	<br/>
+	<span id="wynik1" style="cursor: text;"></span>
+	<br/>
+	<span id="wynik2" style="cursor: text;"></span>
+</p>
+<script type="application/javascript">
 function findUser() {
 	var TestVar = document.getElementById("user").value;
-        span = document.getElementById("wynik1");
+        var span = document.getElementById("wynik1");
         span.innerHTML = "";
         span = document.getElementById("wynik2");
         span.innerHTML = "";
@@ -34,11 +73,11 @@ function findUser() {
 	var hostname = arr[0] + "//" + arr[2];
 	var url = hostname+"/JSON/getLOGUserbyName.php?" + TestVar;
 	xmlhttp.onreadystatechange = function() {
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		var myArr = JSON.parse(xmlhttp.responseText);
-		myFunction(myArr);
-	}
-	}
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var myArr = JSON.parse(xmlhttp.responseText);
+			myFunction(myArr);
+		}
+	};
 
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
@@ -58,7 +97,7 @@ function findUser() {
 
 function findName() {
 	var TestVar = document.getElementById("user").value;
-        span = document.getElementById("wynik1");
+        var span = document.getElementById("wynik1");
         span.innerHTML = "";
         span = document.getElementById("wynik2");
         span.innerHTML = "";	
@@ -69,11 +108,11 @@ function findName() {
 	var hostname = arr[0] + "//" + arr[2];
 	var url = hostname+"/JSON/getLOGNamebyUser.php?" + TestVar;
 	xmlhttp.onreadystatechange = function() {
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		var myArr = JSON.parse(xmlhttp.responseText);
-		myFunction(myArr);
-	}
-	}
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var myArr = JSON.parse(xmlhttp.responseText);
+			myFunction(myArr);
+		}
+	};
 
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
@@ -97,8 +136,6 @@ function findALL() {
 
 
 }
-
-
 </script>
 
 

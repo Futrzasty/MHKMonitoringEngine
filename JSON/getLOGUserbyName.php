@@ -22,7 +22,8 @@
 
 	//$numRows = mssql_num_rows($result);
         while($row = mssql_fetch_array($result)) {
-		$output[] = $row["Name"]." - ".$row["Description"];
+                $vpro_link = '<a href="http://'.$row["Name"].':16992">vPro</a>';
+		        $output[] = $row["Name"]." (".$vpro_link.") - ".$row["Description"];
         }
 
         mssql_close($dbhandle);
