@@ -26,7 +26,11 @@
 	//$numRows = mssql_num_rows($result);
         while($row = mssql_fetch_array($result)) {
                 $vpro_link = '<a href="http://'.$row["Name"].':16992">vPro</a>';
-		        $output[] = $row["Name"]." (".$vpro_link.") - ".$row["Description"]." (".$row["Typ"]." / ".$row["Notice"].")";
+                if ($row["Notice"] != '')
+                    $notice = " / ".$row["Notice"];
+                else
+                    $notice = '';
+		        $output[] = $row["Name"]." (".$vpro_link.") - ".$row["Description"]." (".$row["Typ"].$notice.")";
         }
 
         mssql_close($dbhandle);
