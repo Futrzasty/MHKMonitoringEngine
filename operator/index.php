@@ -64,8 +64,8 @@
         $dane2 = get_JSON_value('getEnvHostStatebyHost', '192.168.12.209;humi');
         draw_frame_twosmallbricks ("Rynek (+1)", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
 
-	echo '<a href="ups_detail.php"><img src="../rrd_graph.php?t4" style="float: left; border: 0px;" /></a>';
-	echo '<a href="ups_detail.php"><img src="../rrd_graph.php?t12" style="float: left; border: 0px; padding-left: 1px;" /></a>';
+	echo '<a href="ups_detail.php"><img src="../rrd_graph.php?t4" style="float: left; border: 0;" /></a>';
+	echo '<a href="ups_detail.php"><img src="../rrd_graph.php?t12" style="float: left; border: 0; padding-left: 1px;" /></a>';
 
 	echo '<div style="clear: both;"></div>';
 	echo '</div>';
@@ -100,11 +100,11 @@
         }
 
 
-        $ids = get_JSON_value('getNetLinkIDs');
-        foreach ($ids as $id) {
-                $dane = get_JSON_value('getNetLinkStatebyID', $id);
-                draw_main_frame ($dane->Name, "<b>$dane->Value</b>", $dane->Color);
-        }
+        //$ids = get_JSON_value('getNetLinkIDs');
+        //foreach ($ids as $id) {
+        //        $dane = get_JSON_value('getNetLinkStatebyID', $id);
+        //        draw_main_frame ($dane->Name, "<b>$dane->Value</b>", $dane->Color);
+        //}
 
         $dane = get_JSON_value('getPrinterGlobalState');
         $dane2 =get_JSON_value('getPrinterGlobalLastChange');
