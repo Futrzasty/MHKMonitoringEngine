@@ -102,17 +102,19 @@
                 mysql_query("UPDATE http_content SET value_cur=".$chresult." WHERE hostname =\"".$row["hostname"]."\"");
 	}
 
-	$result = mysql_query('SELECT id, alias, link, token FROM link_bytoken ORDER BY `order`;');
-	while ($row = mysql_fetch_assoc($result)) {
-		$get_token = file_get_contents($row["link"]);
-		if ($get_token == $row["token"]) 
-			$value = 1;
-		else 
-			$value = 0;
 
-		mysql_query("UPDATE link_bytoken SET `value` = ".$value." WHERE id =".$row["id"]);
-
-	}
+// WYLACZONE SPARWZDANIE LACZY by TOKEN
+//	$result = mysql_query('SELECT id, alias, link, token FROM link_bytoken ORDER BY `order`;');
+//	while ($row = mysql_fetch_assoc($result)) {
+//		$get_token = file_get_contents($row["link"]);
+//		if ($get_token == $row["token"])
+//			$value = 1;
+//		else
+//			$value = 0;
+//
+//		mysql_query("UPDATE link_bytoken SET `value` = ".$value." WHERE id =".$row["id"]);
+//
+//	}
 
 	mysql_close();
 

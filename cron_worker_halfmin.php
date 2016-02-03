@@ -16,7 +16,7 @@
 
 		$result = mysql_query('SELECT host, community, oid, id FROM snmp_env ORDER BY `order`;');
         	while ($row = mysql_fetch_assoc($result)) {
-			$value = snmp2_get($row["host"], $row["community"], $row["oid"]);
+			$value = snmp2_get($row["host"], $row["community"], $row["oid"], 1000000, 3);
 			if (!$value) $value = 0;
                 	mysql_query("UPDATE snmp_env SET `value`=".$value." WHERE id =".$row["id"]);
         	//	echo date(DATE_RFC822).": ".$row["host"]." ".$row["community"]." ".$row["oid"]." ".$value."\n";
