@@ -88,6 +88,10 @@ echo '<div style="clear: both;"></div>';
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.201.6;temp');
         draw_frame_twosmallbricks ("Jag WLOT", "<b>$dane->Value</b>", $dane->Color, "&nbsp;", "gray");
 
+        $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.16.9;temp');
+        $dane2 = get_JSON_value('getEnvHostStatebyHost', '192.168.16.9;humi');
+        draw_frame_twosmallbricks ("CIA", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
+
         $dane = get_JSON_value('getPrinterGlobalState');
         $dane2 =get_JSON_value('getPrinterGlobalLastChange');
         $value = $dane->State;
