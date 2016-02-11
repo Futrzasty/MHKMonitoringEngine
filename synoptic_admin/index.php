@@ -64,23 +64,23 @@
 	echo '<div class="left_column">';
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.83.66;temp');
         $dane2 = get_JSON_value('getEnvHostStatebyHost', '192.168.83.66;humi');
-	    draw_frame_twosmallbricks ("Serw. Jag.", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
+	    draw_frame_twosmallbricks ("Jag Serw", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
 
         $dane = get_JSON_value('getEnvHostStatebyHost', '172.16.0.200;temp');
         $dane2 = get_JSON_value('getEnvHostStatebyHost', '172.16.0.200;humi');
-        draw_frame_twosmallbricks ("Serw. Fabr.", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
+        draw_frame_twosmallbricks ("FS Serw", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
 
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.12.209;temp');
         $dane2 = get_JSON_value('getEnvHostStatebyHost', '192.168.12.209;humi');
-        draw_frame_twosmallbricks ("Rynek (+1)", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
+        draw_frame_twosmallbricks ("PR (+1)", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
 echo '<div style="clear: both;"></div>';
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.12.211;temp');
         $dane2 = get_JSON_value('getEnvHostStatebyHost', '192.168.12.211;humi');
-        draw_frame_twosmallbricks ("Rynek (-2)", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
+        draw_frame_twosmallbricks ("PR (-2)", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
 
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.83.68;temp');
         $dane2 = get_JSON_value('getEnvHostStatebyHost', '192.168.83.68;humi');
-        draw_frame_twosmallbricks ("Jag (-1)", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
+        draw_frame_twosmallbricks ("Jag (-2)", "<b>$dane->Value</b>", $dane->Color, "<b>$dane2->Value</b>%", $dane2->Color);
 
         $dane = get_JSON_value('getEnvHostStatebyHost', '192.168.12.210;temp');
         draw_frame_twosmallbricks ("PR Traf", "<b>$dane->Value</b>", $dane->Color, "&nbsp;", "gray");

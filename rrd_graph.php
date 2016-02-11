@@ -180,8 +180,8 @@ switch ($wybor) {
         $opcja = $optsl365d;
         break;
     case "ipsec4h":
-	$opcja = $ipsec4h;
-	break;
+		$opcja = $ipsec4h;
+		break;
     default:
         $opcja = $optst4h;
         break;
