@@ -23,8 +23,8 @@ $ipsec4h = array( "--end", "now", "--start=end-4h", "--width=690", "--height=124
 
 
 $optst4h = array( "--end", "now", "--start=end-4h", "--width=650", "--height=124", "--full-size-mode", "--border=0", "--color=BACK#444444", "--color=CANVAS#444444", "--color=FONT#cccccc", "--color=ARROW#222222", "--lower-limit=15",
-		"DEF:temp=/var/www/rrd-data/jag_ups.rrd:temp:AVERAGE",
-		"DEF:humi=/var/www/rrd-data/jag_ups.rrd:humi:AVERAGE",
+		"DEF:temp=/var/www/rrd-data/jag_upsT.rrd:temp:AVERAGE",
+		"DEF:humi=/var/www/rrd-data/jag_upsH.rrd:humi:AVERAGE",
 		"LINE1:temp#ff0000:Temperatura (°C) ",
 		"VDEF:tempcur=temp,LAST",
 		"VDEF:tempmax=temp,MAXIMUM",
@@ -46,8 +46,8 @@ $optst4h = array( "--end", "now", "--start=end-4h", "--width=650", "--height=124
 );
 
 $optst12h = array( "--end", "now", "--start=end-12h", "--width=650", "--height=124", "--full-size-mode", "--border=0", "--color=BACK#444444", "--color=CANVAS#444444", "--color=FONT#cccccc", "--color=ARROW#222222", "--lower-limit=15",
-                "DEF:temp=/var/www/rrd-data/jag_ups.rrd:temp:AVERAGE",
-                "DEF:humi=/var/www/rrd-data/jag_ups.rrd:humi:AVERAGE",
+                "DEF:temp=/var/www/rrd-data/jag_upsT.rrd:temp:AVERAGE",
+                "DEF:humi=/var/www/rrd-data/jag_upsH.rrd:humi:AVERAGE",
                 "LINE1:temp#ff0000:Temperatura (°C) ",
                 "VDEF:tempcur=temp,LAST",
                 "VDEF:tempmax=temp,MAXIMUM",
@@ -69,8 +69,8 @@ $optst12h = array( "--end", "now", "--start=end-12h", "--width=650", "--height=1
 );
 
 $optsl4h = array( "--end", "now", "--start=end-4h", "--width=1500", "--height=124", "--lower-limit=0",
-		"DEF:temp=/var/www/rrd-data/jag_ups.rrd:temp:AVERAGE",
-		"DEF:humi=/var/www/rrd-data/jag_ups.rrd:humi:AVERAGE",
+		"DEF:temp=/var/www/rrd-data/jag_upsT.rrd:temp:AVERAGE",
+		"DEF:humi=/var/www/rrd-data/jag_upsH.rrd:humi:AVERAGE",
 		"LINE1:temp#00ff00:Temperatura (°C) ",
 		"VDEF:tempcur=temp,LAST",
 		"VDEF:tempmax=temp,MAXIMUM",
@@ -92,8 +92,8 @@ $optsl4h = array( "--end", "now", "--start=end-4h", "--width=1500", "--height=12
 );
 
 $optsl24h = array( "--end", "now", "--start=end-24h", "--width=1500", "--height=124", "--lower-limit=0",
-		"DEF:temp=/var/www/rrd-data/jag_ups.rrd:temp:AVERAGE",
-		"DEF:humi=/var/www/rrd-data/jag_ups.rrd:humi:AVERAGE",
+		"DEF:temp=/var/www/rrd-data/jag_upsT.rrd:temp:AVERAGE",
+		"DEF:humi=/var/www/rrd-data/jag_upsH.rrd:humi:AVERAGE",
 		"LINE1:temp#00ff00:Temperatura (°C) ",
 		"VDEF:tempcur=temp,LAST",
 		"VDEF:tempmax=temp,MAXIMUM",
@@ -115,8 +115,8 @@ $optsl24h = array( "--end", "now", "--start=end-24h", "--width=1500", "--height=
 );
 
 $optsl30d = array( "--end", "now", "--start=end-30d", "--width=1500", "--height=124", "--lower-limit=0",
-		"DEF:temp=/var/www/rrd-data/jag_ups.rrd:temp:AVERAGE",
-		"DEF:humi=/var/www/rrd-data/jag_ups.rrd:humi:AVERAGE",
+		"DEF:temp=/var/www/rrd-data/jag_upsT.rrd:temp:AVERAGE",
+		"DEF:humi=/var/www/rrd-data/jag_upsH.rrd:humi:AVERAGE",
 		"LINE1:temp#00ff00:Temperatura (°C) ",
 		"VDEF:tempcur=temp,LAST",
 		"VDEF:tempmax=temp,MAXIMUM",
@@ -138,8 +138,8 @@ $optsl30d = array( "--end", "now", "--start=end-30d", "--width=1500", "--height=
 );
 
 $optsl365d = array( "--end", "now", "--start=end-365d", "--width=1500", "--height=124", "--lower-limit=0",
-		"DEF:temp=/var/www/rrd-data/jag_ups.rrd:temp:AVERAGE",
-		"DEF:humi=/var/www/rrd-data/jag_ups.rrd:humi:AVERAGE",
+		"DEF:temp=/var/www/rrd-data/jag_upsT.rrd:temp:AVERAGE",
+		"DEF:humi=/var/www/rrd-data/jag_upsH.rrd:humi:AVERAGE",
 		"LINE1:temp#00ff00:Temperatura (°C) ",
 		"VDEF:tempcur=temp,LAST",
 		"VDEF:tempmax=temp,MAXIMUM",

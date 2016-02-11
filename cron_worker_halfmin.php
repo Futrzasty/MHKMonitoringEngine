@@ -16,7 +16,7 @@
 	for ($i = 0; $i <= 1; $i++) {   //główna pętla - dwa razy na minutę
 		$time_start = microtime(true);
 
-		$result = $server->query('SELECT host, community, oid, id, version FROM snmp_env ORDER BY `order`;');
+		$result = $server->query('SELECT host, community, oid, id, version, rrd_file, divider FROM snmp_env ORDER BY `order`;');
 		while ($row = $result->fetch_assoc()) {
 			if ($row["version"] == "1") {
 				$value = snmpget($row["host"], $row["community"], $row["oid"], 1000000, 3);
@@ -25,16 +25,17 @@
 			}
 			if (!$value) $value = 0;
 			$server->query("UPDATE snmp_env SET `value`=".$value." WHERE id =".$row["id"]);
-			//	echo date(DATE_RFC822).": ".$row["host"]." ".$row["community"]." ".$row["oid"]." ".$value."\n";
-			if ($row["host"] == "192.168.83.66" && $row["oid"] == ".1.3.6.1.2.1.99.1.1.1.4.1") $rrdval[0] = $value / 10;
-			if ($row["host"] == "192.168.83.66" && $row["oid"] == ".1.3.6.1.2.1.99.1.1.1.4.2") $rrdval[1] = $value;
-			if ($row["host"] == "192.168.83.68" && $row["oid"] == ".1.3.6.1.2.1.99.1.1.1.4.1") $rrdval[2] = $value / 10;
-			if ($row["host"] == "192.168.83.68" && $row["oid"] == ".1.3.6.1.2.1.99.1.1.1.4.2") $rrdval[3] = $value;
+			// echo date(DATE_RFC822).": ".$row["host"]." ".$row["community"]." ".$row["oid"]." ".$value."\n";
+			$rrd_val = $value * $row["divider"];
+			$rrd_str = "N:$rrd_val";
+			$rrd_file = NULL;
+			if ($row["rrd_file"]) {
+				$rrd_file = $rrd_path . $row["rrd_file"];
+				rrd_update($rrd_file, array($rrd_str));
+			}
+			//echo date(DATE_RFC822).": ".$row["host"]." ".$row["community"]." ".$row["oid"]." ".$value." ".$rrd_val." ".$rrd_str." ".$rrd_file."\n";
 		}
-		rrd_update("/var/www/rrd-data/jag_ups.rrd", array("N:$rrdval[0]:$rrdval[1]"));
-		//$rrdval[0] = 0;
-		//$rrdval[1] = 0;
-		
+
 		$result = $server->query('SELECT host, probe_type, id FROM nrpe_serv ORDER BY `order`;');
 		while ($row = $result->fetch_assoc()) {
 		switch ($row["probe_type"]) {

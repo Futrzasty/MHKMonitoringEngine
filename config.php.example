@@ -6,4 +6,5 @@ $db_name = 'dbname';
 $nagios_username = "username";
 $nagios_password = "password";
 
+$rrd_path = "/var/www/rrd-data/";
 ?>
