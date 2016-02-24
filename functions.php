@@ -217,7 +217,7 @@ function draw_frame_twosmallbricks ($title='', $up_v='', $up_c='', $dw_v='', $dw
 	echo '<div style="float: left;">'.$title;
 	echo '<div class="ramka_sm1" style="background-color:'.$up_c.';">'.$up_v.'</div>';
 	echo '<div class="ramka_sm1" style="background-color:'.$dw_c.';">'.$dw_v.'</div>';
-        echo '</div>';
+    echo '</div>';
 }
 
 function get_JSON_value ($func, $arg='') {
