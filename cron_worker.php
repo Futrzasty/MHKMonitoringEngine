@@ -61,11 +61,14 @@
 
 	$result = mysql_query('SELECT hostname, checked_text, state, value_cur FROM http_content ORDER BY `order`;');
 	while ($row = mysql_fetch_assoc($result)) {
-		$chresult = check_www($row["hostname"], $row["checked_text"], 15);		
+		$chresult = check_www($row["hostname"], $row["checked_text"], 15);
 
 		$state = $row["state"];
 		$value_cur = $row["value_cur"];
-	
+
+//		$chresult = TRUE; 	//debug
+//		$state = 0;		//debug
+//		$value_cur = 1000;	//debug
 		
 		if ($chresult != FALSE && $state == 0) {
 			echo date(DATE_RFC822).": host ".$row["hostname"]." still in NORMAL state.\n";

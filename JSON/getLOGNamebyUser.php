@@ -19,7 +19,7 @@
                   FROM [Resources]
                   INNER JOIN [LOG-SYSTEM].[dbo].ResourceTypes
                   ON [LOG-SYSTEM].[dbo].[Resources].[ResourceType] = [LOG-SYSTEM].[dbo].[ResourceTypes].[Id]
-                  WHERE [Kind] = 'Computer' AND [HasAgent] = 1 AND [Resources].[Description] LIKE '%$name_to_search%';";
+                  WHERE [Kind] = 'Computer' AND [Resources].[Description] LIKE '%$name_to_search%';";
 
 	$result = mssql_query($query);
 

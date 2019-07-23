@@ -18,7 +18,7 @@
 
 //	$dane = get_JSON_value('getPrinterGlobalState');
 
-        echo '<div class="branchname" style="float: left; width: 100%; font-size: 30pt; font-weight: bold; padding-bottom: 10px;">';
+        echo '<div class="branchname" style="float: left; width: 94%; font-size: 30pt; font-weight: bold; padding-bottom: 10px;">';
 	$ids = get_JSON_value('getWirelessIDs');
         echo 'Status AP - liczba urządzeń: '.count($ids);
         echo '</div>';

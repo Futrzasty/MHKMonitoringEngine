@@ -11,7 +11,7 @@
 //        $query = "SELECT * FROM [dbo].[Resources] WHERE Type = 8 AND ResourceType = 10";
         $query = "SELECT [FirstIpAddress]
   		  FROM [Resources]
-                  WHERE [Resources].[Type] = 8 and [Resources].[Status] = 3 and [Resources].[ResourceType] = 7 and [Resources].[FirstIpAddress] != '';";
+                  WHERE [Resources].[Type] = 8 and [Resources].[Status] = 3 and ([Resources].[ResourceType] = 7 or [Resources].[ResourceType] = 72) and [Resources].[FirstIpAddress] != '';";
 
 	$result = mssql_query($query);
 
