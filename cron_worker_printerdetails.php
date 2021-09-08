@@ -31,7 +31,7 @@
 				else
 					$value = -1;
 				
-				mysql_query("UPDATE printer_snmp_details SET `value` = \"$value\", `value_raw` = \"$values[$i]\" WHERE `host` = \"$host\" AND name = \"$name\";");
+				mysql_query("UPDATE printer_snmp_details SET `value` = \"$value\", `value_raw` = \"$values[$i]\", `last_change`= CURRENT_TIMESTAMP WHERE `host` = \"$host\" AND name = \"$name\";");
 
 			}
 		}
