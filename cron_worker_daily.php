@@ -1,20 +1,17 @@
 <?php
-
-        include_once "JSON/config.php";
-
+    include_once "JSON/config.php";
 	$dbi = 2;
 
-        mysql_connect($dbhost[$dbi], $dbuser[$dbi], $dbpass[$dbi]);
-        @mysql_select_db($dbname[$dbi]) or die("Nie udało się wybrać bazy danych");
+    $server = new mysqli($dbhost[$dbi], $dbuser[$dbi], $dbpass[$dbi], $dbname[$dbi]);
+    if (mysqli_connect_error()) {
+        die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
+    }
 
-        mysql_query("SET CHARACTER SET utf8");
-        mysql_query("SET NAMES utf8");
-        mysql_query("SET COLLATION utf8");
+    $server->query("SET CHARACTER SET utf8");
+    $server->query("SET NAMES utf8");
+    $server->query("SET COLLATION utf8");
 
-	
-	mysql_query("TRUNCATE TABLE `router_ping`;");
-	mysql_query("TRUNCATE TABLE `switch_ping`;");
-	mysql_query("TRUNCATE TABLE `wireless_ping`;");
-
-	mysql_close();
-?>
+    $server->query("TRUNCATE TABLE `router_ping`;");
+    $server->query("TRUNCATE TABLE `switch_ping`;");
+    $server->query("TRUNCATE TABLE `wireless_ping`;");
+    $server->query("TRUNCATE TABLE `printer_snmp_details`;");

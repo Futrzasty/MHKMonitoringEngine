@@ -22,7 +22,9 @@
 		$community = $row["community"];
 
 		$values = snmp2_walk ($host, $community, ".1.3.6.1.2.1.43.11.1.1.9");
+        if ($values == false) continue;
 		$names = snmp2_walk ($host, $community, ".1.3.6.1.2.1.43.11.1.1.6");
+        if ($names == false) continue;
 		foreach ($names as $i => $name) {
 			$result = $server->query("SELECT value_max FROM printer_snmp_details WHERE host = \"$host\" AND name = \"$name\";");
 

@@ -23,16 +23,13 @@
 
         $result = $server->query("SELECT id FROM printer_snmp_details WHERE host = \"$host\";");
 
-		//$info = get_JSON_value("getSwitchInfobyHostMaster", $host);
         if ($result->num_rows == 0) {
 			$names = snmp2_walk ($host , $community , ".1.3.6.1.2.1.43.11.1.1.6");
-			//$values = snmp2_walk ($host , $community , ".1.3.6.1.2.1.43.11.1.1.9");
+			if ($names == false) continue;
 			$maxes = snmp2_walk ($host , $community , ".1.3.6.1.2.1.43.11.1.1.8");
+            if ($maxes == false) continue;
 			foreach ($names as $i => $name) {
                 $server->query("INSERT INTO printer_snmp_details (host, name, value_max) VALUES (\"$host\", \"$name\", \"$maxes[$i]\");");
 			}
-                        //$result=mysql_query("SELECT host, id, value FROM switch_ping WHERE host = \"$host\";");
         }
-        //$row = $result->fetch_assoc();
-		//$server->query("UPDATE switch_ping SET `alias` = \"$info->Alias\", `name` = \"$info->Name\", `impact` = \"$info->Impact\" WHERE `host` = \"$host\";");
 	}

@@ -1,0 +1,9 @@
+*/2 *   * * *   root    /usr/bin/php /var/www/cron_worker_2min.php >> /root/worker_2min.log 2>&1
+*/5 *   * * *   root    /usr/bin/php /var/www/cron_worker_5min.php >> /root/worker_5min.log 2>&1
+*/10 *  * * *   root    /usr/bin/php /var/www/cron_worker_10min.php >> /root/worker_10min.log 2>&1
+*  *    * * *   root    /usr/bin/php /var/www/cron_worker.php >> /root/worker.log 2>&1
+*  *    * * *   root    /usr/bin/php /var/www/cron_worker_halfmin.php >> /root/worker_halfmin.log 2>&1
+0 19    * * *   root    /usr/bin/php /var/www/cron_worker_daily.php >> /root/worker_daily.log 2>&1
+
+5 *    * * *   root    /usr/bin/php /var/www/cron_worker_addprinters.php >> /root/cron_worker_addprinters.log 2>&1
+*/15 *  * * *   root    /usr/bin/php /var/www/cron_worker_printerdetails.php >> /root/cron_worker_printerdetails.log 2>&1
