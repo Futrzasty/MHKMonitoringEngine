@@ -16,7 +16,8 @@
     $hosts = get_JSON_value('getPrinterList');
 	
 	foreach ($hosts as $host) {
-        $result = $server->query("SELECT community FROM printer_snmp WHERE host = \"$host\";");
+        if ($host == "127.0.0.1") continue;
+	    $result = $server->query("SELECT community FROM printer_snmp WHERE host = \"$host\";");
         $row = $result->fetch_assoc();
         $community = $row["community"];
 
